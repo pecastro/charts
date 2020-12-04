@@ -41,9 +41,9 @@ dataPVC:
   # name sets part of the name for this Persistent Volume Claim
   name: "data"
   ## storageClassName is the name of the Storage Class to use, or an empty string for no Storage Class
-  storageClassName: ""
+  storageClassName: "gp2"
   ## size is the minimum size of the Persistent Volume
-  size: 2Gi
+  size: 1Gi
 
 # logPVC section specifies settings for the transaction logs Persistent Volume Claim, which is used for data in /mnt/mqm-log
 logPVC:
@@ -52,9 +52,9 @@ logPVC:
   # name sets part of the name for this Persistent Volume Claim
   name: "log"
   ## storageClassName is the name of the Storage Class to use, or an empty string for no Storage Class
-  storageClassName: ""
+  storageClassName: "efs-log"
   ## size is the minimum size of the Persistent Volume
-  size: 2Gi
+  size: 1Gi
 
 # qmPVC section specifies settings for the queue manager data Persistent Volume Claim, which is used for data in /mnt/mqm-data
 qmPVC:
@@ -63,9 +63,9 @@ qmPVC:
   # name sets part of the name for this Persistent Volume Claim
   name: "qm"
   ## storageClassName is the name of the Storage Class to use, or an empty string for no Storage Class
-  storageClassName: ""
+  storageClassName: "efs-qm"
   ## size is the minimum size of the Persistent Volume
-  size: 2Gi
+  size: 1Gi
 
 resources:
   limits:
@@ -88,7 +88,7 @@ queueManager:
   # name allows you to specify the name to use for the queue manager.  Defaults to the Helm release name.
   name:
   # multiInstance specifies whether to run in multi-instance mode with an active and standby queue manager
-  multiInstance: false
+  multiInstance: true
   # The duration in seconds the Queue Manager needs to terminate gracefully, difference in time between SIGTERM and SIGKILL
   terminationGracePeriodSeconds: 30
   # dev section specifies settings for the MQ developer defaults available in the MQ Advanced for Developers image.
