@@ -81,7 +81,7 @@ security:
     fsGroup:
     supplementalGroups: []
   # initVolumeAsRoot specifies whether or not storage provider requires root permissions to initialize
-  initVolumeAsRoot: false
+  initVolumeAsRoot: true
 
 # queueManager section specifies settings for the MQ Queue Manager
 queueManager:
@@ -115,7 +115,7 @@ pki:
 # log section specifies settings for MQ error logs
 log:
   format: basic
-  debug: false
+  debug: true
 
 # trace can be used to enable MQ trace
 trace:

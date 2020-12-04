@@ -272,6 +272,25 @@ spec:
                 - DAC_OVERRIDE
               drop:
                 - ALL
+        - name: qmgr-extra-chown
+          image: busybox:1.32.0
+          imagePullPolicy: IfNotPresent
+          terminationMessagePath: "/run/termination-log"
+          command: ["/bin/sh"]
+          args: ["-c","chown -R 1001 /mnt/mqm/data /mnt/mqm-log /mnt/mqm-data"]
+          {{- if .Values.persistence.enabled }}
+          volumeMounts:
+          - mountPath: "/mnt/mqm"
+            name: {{ $dataVolumeClaimName }}
+          {{- if or .Values.logPVC.enabled .Values.queueManager.multiInstance }}
+          - mountPath: "/mnt/mqm-log"
+            name: {{ $logVolumeClaimName }}
+          {{- end }}
+          {{- if or .Values.qmPVC.enabled .Values.queueManager.multiInstance }}
+          - mountPath: "/mnt/mqm-data"
+            name: {{ $qmVolumeClaimName }}
+          {{- end }}
+          {{- end }}
       {{- end }}
   volumeClaimTemplates:
   {{- if .Values.persistence.enabled }}
