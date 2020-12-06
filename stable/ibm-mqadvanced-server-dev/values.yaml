@@ -115,7 +115,7 @@ pki:
 # log section specifies settings for MQ error logs
 log:
   format: basic
-  debug: true
+  debug: false
 
 # trace can be used to enable MQ trace
 trace:
