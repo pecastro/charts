@@ -48,7 +48,7 @@ dataPVC:
 # logPVC section specifies settings for the transaction logs Persistent Volume Claim, which is used for data in /mnt/mqm-log
 logPVC:
   ## enabled is whether to use separate storage for transaction logs
-  enabled: false
+  enabled: true
   # name sets part of the name for this Persistent Volume Claim
   name: "log"
   ## storageClassName is the name of the Storage Class to use, or an empty string for no Storage Class
@@ -59,7 +59,7 @@ logPVC:
 # qmPVC section specifies settings for the queue manager data Persistent Volume Claim, which is used for data in /mnt/mqm-data
 qmPVC:
   ## enabled is whether to use separate storage for queue manager data
-  enabled: false
+  enabled: true
   # name sets part of the name for this Persistent Volume Claim
   name: "qm"
   ## storageClassName is the name of the Storage Class to use, or an empty string for no Storage Class
@@ -69,11 +69,11 @@ qmPVC:
 
 resources:
   limits:
-    cpu: 500m
-    memory: 512Mi
+    cpu: 1000m
+    memory: 1024Mi
   requests:
-    cpu: 500m
-    memory: 512Mi
+    cpu: 1000m
+    memory: 1024Mi
 
 security:
   # context section specifies additional security context settings for the pod
@@ -86,7 +86,7 @@ security:
 # queueManager section specifies settings for the MQ Queue Manager
 queueManager:
   # name allows you to specify the name to use for the queue manager.  Defaults to the Helm release name.
-  name:
+  name: QM1
   # multiInstance specifies whether to run in multi-instance mode with an active and standby queue manager
   multiInstance: true
   # The duration in seconds the Queue Manager needs to terminate gracefully, difference in time between SIGTERM and SIGKILL
