@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: ibm-mq-ibm-mq-qm
+  name: ibm-mq-ibm-mq-log
 spec:
   capacity:
     storage: 1Gi
@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: efs-qm
+  storageClassName: efs-generic
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: fs-1eb395ef
+    volumeHandle: fs-62f0d193:/log

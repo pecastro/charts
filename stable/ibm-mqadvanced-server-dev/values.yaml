@@ -52,7 +52,7 @@ logPVC:
   # name sets part of the name for this Persistent Volume Claim
   name: "log"
   ## storageClassName is the name of the Storage Class to use, or an empty string for no Storage Class
-  storageClassName: "efs-log"
+  storageClassName: "efs-generic"
   ## size is the minimum size of the Persistent Volume
   size: 1Gi
 
@@ -63,7 +63,7 @@ qmPVC:
   # name sets part of the name for this Persistent Volume Claim
   name: "qm"
   ## storageClassName is the name of the Storage Class to use, or an empty string for no Storage Class
-  storageClassName: "efs-qm"
+  storageClassName: "efs-generic"
   ## size is the minimum size of the Persistent Volume
   size: 1Gi
 
